@@ -1,0 +1,96 @@
+:root {
+  --accent: #3d90d7;
+  --accent-light: #3a59d1;
+  --white: #fff;
+  --grey: #dfdfdf9a;
+  --black: rgb(9 9 11);
+  --trans: all 0.33s ease-in-out;
+  --shadow: 0px 0px 30px rgba(0, 0, 0, 0.116);
+  --width: 1200px;
+  --unit: 16px;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-size: calc(var(--unit));
+}
+
+html {
+  font-family: "Poppins", serif;
+}
+
+html.marathi-font {
+  font-family: "Noto Sans Devanagari", serif;
+  font-weight: 500;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+
+.parent {
+  width: 100%;
+
+  .container {
+    max-width: var(--width);
+    padding: 0px 10px;
+    margin: auto;
+    height: 100%;
+  }
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Lora", serif;
+}
+span {
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  font-family: "Lora", serif;
+  color: var(--accent);
+}
+
+p {
+  font-family: "Lora", serif;
+}
+
+body {
+  -ms-overflow-style: scrollbar;
+}
+
+.bg-img-cover {
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+}
+
+.bg-img-contain {
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 100px;
+  border: none;
+  background-color: var(--accent);
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f0f0f0;
+  transition: var(--trans);
+  &:hover {
+    background-color: var(--accent-light);
+    color: white;
+  }
+}

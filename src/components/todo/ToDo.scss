@@ -1,0 +1,61 @@
+.to-parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .to-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    .left {
+      width: 35%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.247);
+      border-radius: 8px;
+      gap: 20px;
+
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        p {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 100%;
+        }
+      }
+    }
+    .right {
+      width: 75%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid rgba(0, 0, 0, 0.247);
+      border-radius: 8px;
+      flex-direction: column;
+      padding: 20px;
+
+      :where(.css-dev-only-do-not-override-1v5z42l).ant-table-wrapper {
+        width: 100%;
+      }
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.247);
+      border-radius: 8px;
+      outline: none;
+    }
+  }
+}
