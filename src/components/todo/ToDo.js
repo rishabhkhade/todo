@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ToDo.scss";
 import { Table } from "antd";
 import { CiEdit } from "react-icons/ci";
@@ -10,18 +10,7 @@ function ToDo() {
     description: "",
   });
 
-  const dataSource = [
-    {
-      key: "1",
-      Task: "Mike",
-      Description: "10 Downing Street",
-    },
-    {
-      key: "1",
-      Task: "Mike",
-      Description: "10 Downing Street",
-    },
-  ];
+  const [taskList, setTaskList] = useState([]);
 
   const columns = [
     {
@@ -32,13 +21,13 @@ function ToDo() {
     },
     {
       title: "Task",
-      dataIndex: "Task",
-      key: "Task",
+      dataIndex: "task",
+      key: "task",
     },
     {
       title: "Description",
-      dataIndex: "Description",
-      key: "Description",
+      dataIndex: "description",
+      key: "description",
     },
     {
       title: "Action",
@@ -58,13 +47,47 @@ function ToDo() {
       ),
     },
   ];
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    const keys = Object.keys(localStorage).map(Number);
+    console.log(keys);
+    const maxId = keys.length > 0 ? Math.max(...keys) : 0;
+    console.log(maxId);
+    const newId = maxId + 1;
+
+    localStorage.setItem(newId, JSON.stringify(taskvalue));
+    getAllData();
+    setTaskValue({
+      task: "",
+      description: "",
+    });
+  };
+
+  const getAllData = () => {
+    try {
+      const response = Object.keys(localStorage).map((key) => {
+        JSON.parse(localStorage.getItem(key));
+
+        return {
+          id: key,
+          ...JSON.parse(localStorage.getItem(key)),
+        };
+      });
+
+      setTaskList(response);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    getAllData();
+  }, []);
   return (
     <>
       <div className="parent to-parent">
         <div className="container to-cont">
           <div className="left">
-            <form action="">
+            <form action="" onSubmit={handleSubmit}>
               <h2>Add Items</h2>
               <p>
                 <label for="">Task</label>
@@ -73,6 +96,12 @@ function ToDo() {
                   placeholder="Enter your task"
                   value={taskvalue.task}
                   name="task"
+                  onChange={(e) =>
+                    setTaskValue({
+                      ...taskvalue,
+                      task: e.target.value,
+                    })
+                  }
                 />
               </p>
 
@@ -83,6 +112,12 @@ function ToDo() {
                   placeholder="Enter your description"
                   value={taskvalue.description}
                   name="description"
+                  onChange={(e) =>
+                    setTaskValue({
+                      ...taskvalue,
+                      description: e.target.value,
+                    })
+                  }
                 />
               </p>
 
@@ -92,7 +127,7 @@ function ToDo() {
             </form>
           </div>
           <div className="right">
-            <Table dataSource={dataSource} columns={columns} />
+            <Table dataSource={taskList} columns={columns} />
           </div>
         </div>
       </div>
