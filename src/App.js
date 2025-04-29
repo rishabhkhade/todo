@@ -5,6 +5,7 @@ import ProgressBar from "./components/progress-bar/ProgressBar";
 import Input from "./components/inputs-field/Input";
 import Steps from "./components/steps/Steps";
 import ToDo from "./components/todo/ToDo";
+import Search from "./components/search/Search";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/progress" element={<ProgressBar />} />
           <Route path="/input" element={<Input />} />
           <Route path="/steps" element={<Steps />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/todo" element={<ToDo />} />
         </Routes>
       </BrowserRouter>

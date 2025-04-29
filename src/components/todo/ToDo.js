@@ -51,9 +51,9 @@ function ToDo() {
     e.preventDefault();
 
     const keys = Object.keys(localStorage).map(Number);
-    console.log(keys);
+
     const maxId = keys.length > 0 ? Math.max(...keys) : 0;
-    console.log(maxId);
+    
     const newId = maxId + 1;
 
     localStorage.setItem(newId, JSON.stringify(taskvalue));
@@ -82,7 +82,7 @@ function ToDo() {
   useEffect(() => {
     getAllData();
   }, []);
-  
+
   return (
     <>
       <div className="parent to-parent">
