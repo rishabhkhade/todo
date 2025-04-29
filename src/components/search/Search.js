@@ -2,11 +2,22 @@ import React from "react";
 import "./Search.scss";
 
 const placeholders = [
-  "chocolate box",
   "cheese",
   "apple juice",
   "orange",
   "pineapple",
+  "kurkure",
+  "amul butter",
+  "milk",
+  "bread",
+  "egg",
+  "chocolate",
+  "chips",
+  "sweets",
+  "biscuit",
+  "fruits",
+  "amul butter",
+
 ];
 
 export default function SearchBar() {
