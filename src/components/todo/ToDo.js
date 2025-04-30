@@ -11,6 +11,20 @@ function ToDo() {
   });
 
   const [taskList, setTaskList] = useState([]);
+  const [editId, setEditId] = useState(null);
+
+  const handleDelete = (id) => {
+    localStorage.removeItem(id);
+    getAllData(); 
+  };
+
+  const handleEdit = (item) => {
+    setTaskValue({
+      task: item.task,
+      description: item.description,
+    });
+    setEditId(item.id);
+  };
 
   const columns = [
     {
@@ -41,28 +55,36 @@ function ToDo() {
             gap: "30px",
           }}
         >
-          <CiEdit style={{ cursor: "pointer" }} />
-          <MdOutlineDelete style={{ cursor: "pointer", color: "red" }} />
+          <CiEdit
+            style={{ cursor: "pointer" }}
+            onClick={() => handleEdit(record)}
+          />
+          <MdOutlineDelete
+            style={{ cursor: "pointer", color: "red" }}
+            onClick={() => handleDelete(record.id)}
+          />
         </span>
       ),
     },
   ];
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const keys = Object.keys(localStorage).map(Number);
-
-    const maxId = keys.length > 0 ? Math.max(...keys) : 0;
-    
-    const newId = maxId + 1;
-
-    localStorage.setItem(newId, JSON.stringify(taskvalue));
+  
+    if (editId !== null) {
+      localStorage.setItem(editId, JSON.stringify(taskvalue));
+      setEditId(null); // clear edit state
+    } else {
+      const keys = Object.keys(localStorage).map(Number);
+      const maxId = keys.length > 0 ? Math.max(...keys) : 0;
+      const newId = maxId + 1;
+      localStorage.setItem(newId, JSON.stringify(taskvalue));
+    }
+  
     getAllData();
-    setTaskValue({
-      task: "",
-      description: "",
-    });
+    setTaskValue({ task: "", description: "" });
   };
+  
 
   const getAllData = () => {
     try {
@@ -122,8 +144,8 @@ function ToDo() {
                 />
               </p>
 
-              <button class="btn" type="submit">
-                Enter
+              <button className="btn" type="submit">
+                {editId !== null ? "Update" : "Enter"}
               </button>
             </form>
           </div>
