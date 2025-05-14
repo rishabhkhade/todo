@@ -17,7 +17,6 @@ const placeholders = [
   "biscuit",
   "fruits",
   "amul butter",
-
 ];
 
 export default function SearchBar() {

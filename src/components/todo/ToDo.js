@@ -5,6 +5,8 @@ import { CiEdit } from "react-icons/ci";
 import { MdOutlineDelete } from "react-icons/md";
 
 function ToDo() {
+  const [color, setColor] = useState("");
+
   const [taskvalue, setTaskValue] = useState({
     task: "",
     description: "",
@@ -15,7 +17,7 @@ function ToDo() {
 
   const handleDelete = (id) => {
     localStorage.removeItem(id);
-    getAllData(); 
+    getAllData();
   };
 
   const handleEdit = (item) => {
@@ -70,7 +72,7 @@ function ToDo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     if (editId !== null) {
       localStorage.setItem(editId, JSON.stringify(taskvalue));
       setEditId(null); // clear edit state
@@ -80,11 +82,10 @@ function ToDo() {
       const newId = maxId + 1;
       localStorage.setItem(newId, JSON.stringify(taskvalue));
     }
-  
+
     getAllData();
     setTaskValue({ task: "", description: "" });
   };
-  
 
   const getAllData = () => {
     try {
@@ -151,6 +152,33 @@ function ToDo() {
           </div>
           <div className="right">
             <Table dataSource={taskList} columns={columns} />
+          </div>
+        </div>
+      </div>
+
+      <div class="parent">
+        <div class="container">
+          <div class="three-btn">
+            <div
+              class={` btnn ${color === "bold" ? "active-btn-bold" : ""}`}
+              onClick={() => setColor("bold")}
+            >
+              B
+            </div>
+            <div
+              class={` btnn ${color === "italic" ? "active-btn-italic" : ""}`}
+              onClick={() => setColor("italic")}
+            >
+              I
+            </div>
+            <div
+              class={`btnn ${
+                color === "underline" ? "active-btn-underline" : ""
+              }`}
+              onClick={() => setColor("underline")}
+            >
+              U
+            </div>
           </div>
         </div>
       </div>

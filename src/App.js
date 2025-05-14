@@ -6,6 +6,8 @@ import Input from "./components/inputs-field/Input";
 import Steps from "./components/steps/Steps";
 import ToDo from "./components/todo/ToDo";
 import Search from "./components/search/Search";
+import Contact from "./components/contact/Contact";
+import About from "./components/about/About";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/steps" element={<Steps />} />
           <Route path="/search" element={<Search />} />
           <Route path="/todo" element={<ToDo />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
     </div>

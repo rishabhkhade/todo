@@ -24,7 +24,7 @@ function Steps() {
     <>
       <div class="parent step-parent">
         {data.map((item, index) => (
-          <div class="container step-container">
+          <div class="containelr step-container">
             <div class="step-left">
               <img src="" alt="" />
             </div>
@@ -40,6 +40,8 @@ function Steps() {
         ))}
 
         <div class="steps-middle-line"></div>
+
+       
       </div>
     </>
   );

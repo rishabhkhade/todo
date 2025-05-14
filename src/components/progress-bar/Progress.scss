@@ -25,7 +25,6 @@
       width: 100%;
       height: 4px;
       background: var(--accent);
-      
     }
     .point {
       z-index: 1;
@@ -45,5 +44,9 @@
         color: var(--white);
       }
     }
+  }
+
+  .color {
+    margin-top: 100px;
   }
 }
